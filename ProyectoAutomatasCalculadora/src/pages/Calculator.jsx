@@ -146,9 +146,3 @@ function Calculator() {
 
 export default Calculator;
 
-
-
-
-
-//import { ParserRules, ParserStart } from '../gramatica/grammar.js';
-//const compiledGrammar = { ParserRules, ParserStart };
