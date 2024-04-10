@@ -1,72 +1,67 @@
-.container{
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    height: 100vh;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 #cal-body {
-    width: 35rem;
-    height: auto;
-    border-radius: 1.25rem;
-    background: #dde1e7;
-    box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
-    padding: 45px;
-    scale: 0.8;
-  }
-  
-  .input input {
-    height: 8rem;
-    width: 85%;
-    border-radius: 10px;
-    background: #dde1e7;
-    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
-    border: 0;
-    color: rgb(116, 116, 116);
-    font-size: 3rem;
-    padding: 0 30px;
-  }
-  
-  .input input:focus {
-    outline: none;
-    background: #dde1e7;
-    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
-  }
-  
-  .buttons button {
-    cursor: pointer;
-    height: 7rem;
-    width: 7rem;
-    border: 0;
-    font-size: 2.5rem;
-    border-radius: 50px;
-    background: #dde1e7;
-    box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
-    color: rgb(137, 137, 137);
-  }
-  
-  .buttons button:focus {
-    background: #dde1e7;
-    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
-  }
-  
-  .buttons {
-    padding-top: 1.875rem;
-    display: flex;
-    justify-content: space-between;
-  }
+  width: 30rem;
+  height: auto;
+  border-radius: 1.5rem;
+  background: #f4f4f4;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  padding: 3rem;
+  transform: scale(0.9); /* Reducir tamaño */
+}
 
-  .estiloImpresion{
-    display: flex;
-    justify-content: justify;
-    align-items: justify;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: rgb(137, 137, 137);
-  }
+.input input {
+  height: 6rem;
+  width: 100%;
+  border-radius: 1rem;
+  background: #e0e0e0;
+  border: none;
+  color: #333;
+  font-size: 2rem;
+  padding: 0 2rem;
+}
 
-  .tituloOperaciones{
-    font-size: 3rem;
-    color: rgb(117, 117, 117);
-    text-align: center;
-  }
+.input input:focus {
+  outline: none;
+}
+
+.buttons button {
+  cursor: pointer;
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  background: #e0e0e0;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border: none;
+  font-size: 2rem;
+  color: #555;
+}
+
+.buttons button:focus {
+  outline: none;
+}
+
+.buttons {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.estiloImpresion {
+  font-size: 1.5rem;
+  color: #777;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.tituloOperaciones {
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+}

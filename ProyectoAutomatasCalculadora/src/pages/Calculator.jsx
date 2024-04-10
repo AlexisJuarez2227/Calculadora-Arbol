@@ -9,10 +9,17 @@ function Calculator() {
     const [operationElements, setOperationElements] = useState([]); // Nuevo estado
 
     const handleClick = (e) => {
-        setInput(input + e.target.name);
-        setLexResult([...lexResult, e.target.name]);
-        setOperationElements([...operationElements, e.target.name]); // Agregar el elemento a operationElements
-    }
+        const value = e.target.name;
+        if (value === "DEL") {
+            setInput(input.slice(0, -1)); // Eliminar el último carácter
+            setLexResult(lexResult.slice(0, -1)); // Eliminar el último token
+            setOperationElements(operationElements.slice(0, -1)); // Eliminar el último elemento de la lista de operaciones
+        } else {
+            setInput(input + value);
+            setLexResult([...lexResult, value]);
+            setOperationElements([...operationElements, value]); // Agregar el elemento a operationElements
+        }
+    };
 
     const calculate = () => {
         try {
@@ -59,16 +66,16 @@ function Calculator() {
                 return 'operador multiplicación';
             case '(':
                 return 'paréntesis izquierdo';
-            case ')':   
+            case ')':
                 return 'paréntesis derecho';
-            case '.':   
+            case '.':
                 return 'punto decimal';
             default:
                 return 'desconocido';
         }
     }
 
-    return ( 
+    return (
         <>
             <div className="container">
                 <div id="cal-body">
@@ -78,7 +85,7 @@ function Calculator() {
                     <div>
                         <p>Lexical Analysis: {lexResult.join(' ')}</p>
                     </div>
-                    <div style={{paddingTop: '3rem'}}>
+                    <div style={{ paddingTop: '3rem' }}>
                         <div className="buttons">
                             <button name="1" onClick={handleClick}>1</button>
                             <button name="2" onClick={handleClick}>2</button>
@@ -105,8 +112,9 @@ function Calculator() {
                         </div>
                         <div className="buttons">
                             <button onClick={clear}>CL</button>
-                            <button name="/" onClick={handleClick}>/</button> 
-                            <button style={{ width: "18rem"}} onClick={calculate}>=</button>
+                            <button name="/" onClick={handleClick}>/</button>
+                            <button name="DEL" onClick={handleClick}>DEL</button> {/* Agregar el botón de borrar */}
+                            <button style={{ width: "18rem" }} onClick={calculate}>=</button>
                         </div>
                     </div>
                 </div>
@@ -115,26 +123,29 @@ function Calculator() {
                     {operations.map((operation, index) => (
                         <p className="estiloImpresion" key={index}>{index + 1}.- {operation}</p>
                     ))}
-                    <div style={{ boxShadow: '5px 5px 15px rgba(0,0,0,0.3)', borderRadius: '10px', border: '3px solid black', marginTop: "1rem"}}>
-                        <h4 className='tituloOperaciones'> Arbol</h4>
-                        <pre className="estiloImpresion">{operationTree}</pre>
-                    </div>
                 </div>
-                <div style={{ marginLeft: '5rem' }}>
-                    <h3 className='tituloOperaciones'>Impresión de Token</h3>
-                    {operationElements.map((element, index) => {
-                        const tokenType = getTokenType(element);
-                        return (
-                            <p className="estiloImpresion" key={index}>Line {index + 1}: Generado por el Token "{element}" de tipo {tokenType}</p>
-                        );
-                    })}
+            </div>
+            <div style={{ marginLeft: '5rem' }}>
+                <h3 className='tituloOperaciones'>Impresión de Token</h3>
+                {operationElements.map((element, index) => {
+                    const tokenType = getTokenType(element);
+                    return (
+                        <p className="estiloImpresion" key={index}>Line {index + 1}: Generado por el Token "{element}" de tipo {tokenType}</p>
+                    );
+                })}
+            </div>
+            <div style={{ marginLeft: '5rem', marginTop: '1rem' }}>
+                <h4 className='tituloOperaciones'> Árbol</h4>
+                <div className="treeContainer" style={{ maxHeight: '200px', overflow: 'auto' }}>
+                    <pre className="estiloImpresion">{operationTree}</pre>
                 </div>
             </div>
         </>
-     );
+    );
 }
 
 export default Calculator;
+
 
 
 
